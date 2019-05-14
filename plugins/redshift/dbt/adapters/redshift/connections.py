@@ -1,5 +1,6 @@
 from contextlib import contextmanager
-import multiprocessing
+# import multiprocessing
+import threading
 
 from dbt.adapters.postgres import PostgresConnectionManager
 from dbt.adapters.postgres import PostgresCredentials
@@ -8,7 +9,8 @@ import dbt.exceptions
 
 import boto3
 
-drop_lock = multiprocessing.Lock()
+drop_lock = threading.Lock()
+# drop_lock = multiprocessing.Lock()
 
 
 REDSHIFT_CREDENTIALS_CONTRACT = {
